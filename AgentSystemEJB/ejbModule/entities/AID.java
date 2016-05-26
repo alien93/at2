@@ -1,4 +1,4 @@
-package model;
+package entities;
 /**
  * 
  * @author nina
@@ -11,6 +11,8 @@ public class AID {
 	private AgentCenter agentCenter;
 	private AgentType agentType;
 	
+	public static final String HOST_NAME = "xjaf";
+	
 	
 	public AID() {
 		super();
@@ -21,6 +23,13 @@ public class AID {
 		super();
 		this.name = name;
 		this.agentCenter = agentCenter;
+		this.agentType = agentType;
+	}
+	
+	public AID(String name, String agentCenterName, AgentType agentType) {
+		super();
+		this.name = name;
+		this.agentCenter.setAlias(agentCenterName);
 		this.agentType = agentType;
 	}
 

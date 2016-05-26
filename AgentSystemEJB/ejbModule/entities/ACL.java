@@ -1,4 +1,6 @@
-package model;
+package entities;
+import java.io.Serializable;
+import java.util.ArrayList;
 /**
  * 
  * @author nina
@@ -6,11 +8,17 @@ package model;
 import java.util.Arrays;
 import java.util.HashMap;
 
-public class ACL {
+import com.sun.xml.internal.bind.v2.runtime.unmarshaller.XsiNilLoader.Array;
 
+public class ACL implements Serializable{
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -5807115637621019762L;
 	private Performative performative;
 	private AID sender;
-	private AID receivers[];
+	private ArrayList<AID> receivers;
 	private AID replyTo;
 	private String content;
 	private Object contentObj;
@@ -31,7 +39,7 @@ public class ACL {
 	}
 
 
-	public ACL(Performative performative, AID sender, AID[] receivers, AID replyTo, String content, Object contentObj,
+	public ACL(Performative performative, AID sender, ArrayList<AID> receivers, AID replyTo, String content, Object contentObj,
 			HashMap<String, Object> userArgs, String language, String encoding, String ontology, String protocol,
 			String conversationId, String replyWith, String inReplyTo, Long replyBy) {
 		super();
@@ -53,7 +61,7 @@ public class ACL {
 	}
 
 
-	public ACL(Performative performative, AID sender, AID[] receivers, AID replyTo, String content, Object contentObj) {
+	public ACL(Performative performative, AID sender, ArrayList<AID> receivers, AID replyTo, String content, Object contentObj) {
 		super();
 		this.performative = performative;
 		this.sender = sender;
@@ -84,12 +92,12 @@ public class ACL {
 	}
 
 
-	public AID[] getReceivers() {
+	public ArrayList<AID> getReceivers() {
 		return receivers;
 	}
 
 
-	public void setReceivers(AID[] receivers) {
+	public void setReceivers(ArrayList<AID> receivers) {
 		this.receivers = receivers;
 	}
 
@@ -216,10 +224,10 @@ public class ACL {
 
 	@Override
 	public String toString() {
-		return "ACL [performative=" + performative + ", sender=" + sender + ", receivers=" + Arrays.toString(receivers)
-				+ ", replyTo=" + replyTo + ", content=" + content + ", contentObj=" + contentObj + ", userArgs="
-				+ userArgs + ", language=" + language + ", encoding=" + encoding + ", ontology=" + ontology
-				+ ", protocol=" + protocol + ", conversationId=" + conversationId + ", replyWith=" + replyWith
-				+ ", inReplyTo=" + inReplyTo + ", replyBy=" + replyBy + "]";
+		return "ACL [performative=" + performative + ", sender=" + sender + ", receivers=" + receivers + ", replyTo="
+				+ replyTo + ", content=" + content + ", contentObj=" + contentObj + ", userArgs=" + userArgs
+				+ ", language=" + language + ", encoding=" + encoding + ", ontology=" + ontology + ", protocol="
+				+ protocol + ", conversationId=" + conversationId + ", replyWith=" + replyWith + ", inReplyTo="
+				+ inReplyTo + ", replyBy=" + replyBy + "]";
 	}
 }
